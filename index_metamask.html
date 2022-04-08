@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metamask</title>
+    <style>
+        .button {
+          background-color: #45d4b0;
+          border: 2px solid black;
+          color: rgb(0, 0, 0);
+          padding: 5px 5px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 15px;
+          margin: 4px 2px;
+          cursor: pointer;
+          width: 240px;
+        }
+
+        .Meta {
+          background-color: #d44545;
+          border: 2px solid black;
+          color: rgb(0, 0, 0);
+          padding: 5px 5px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 15px;
+          margin: 4px 2px;
+          cursor: pointer;
+          width: 240px;
+        }
+
+        .text {
+            color: rgb(0, 0, 0);
+            padding: 5px 5px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 15px;
+            margin: 4px 2px;
+            cursor: pointer;
+            width: 230px;
+            font-size: large;
+        }
+
+    </style>
+</head>
+<body bgcolor="#C9C0BB#BCC6CC" align="center">
+    <div class="center">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.2-rc.0/web3.min.js" integrity="sha512-REWiGZVmhU2S5eIov/DuNrsq4djWnPaAHSvXrbLLLaI0r/gW+wh1utIzxt0iB4IQLgXhNDj5mR0YMBjrkKhVMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.6.2/ethers.umd.min.js" integrity="sha512-VLIBlhfqpqbMD6ZAPx7uzfF9/WEfVBgbcIfw5i/9k3smQlVupb1yq2WFChUcefVCBdkGrDHywOfnlMAKmK5QZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.js"></script>
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script> -->
+    <script src="metamask.js"></script>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/MetaMask_Fox.svg" width = "100" height = "100" alt="">
+    <br>
+    <p style="margin-left: 5px;"id="status_p" class="text">Status: <span id="status">Disconnected</span></p>
+    <br>
+    <br>
+    <input type="button" class="button" value="Connect Metamask" id="submitbtn" onclick="ConnectMetamaskWallet()"/>
+
+    
+    <br>
+    <br>
+    <label for="Network" class="text">Choose a Network:</label>
+    <br>    
+    <select name="Network" id="network" class="Meta">
+        <option value="1">Mainnet</option>
+        <option value="3">Ropsten</option>
+        <option value="4">Rinkeby</option>
+        <option value="42">Kovan</option>
+        <option value="137">Polygon</option>
+        <option value="56">BSC Smart Chain</option>
+    </select>
+    <br>
+    <br>
+    <p style="margin-left: 5px;"id="currnet_p" class="text">Your Network: <span id="currnet">... Network</span></p>
+    <br>
+    <p style="margin-left: 5px;"id="address_p" class="text">Your Address: <span id="address">... Address</span></p>
+    <br>
+    <p style="margin-inline-end: 5px;"id="balance_p" class="text">Balance: <span id="balance">... ETH</span></p>
+    <br>
+    <br>
+    <input
+        type = "text"
+        placeholder = "Receiver's Address"
+        id = "recaddress"
+        value = ""
+        class="text"
+        required
+    />
+    <br>
+    <br>
+    <input 
+    type="number"
+    placeholder = "Enter Amount"
+    id = "ethvalue"
+    value = ""
+    class="text"
+    required
+    />
+    <br>
+    <br>
+    <button class="button" onclick="SendEther()">Transact Ether</button>
+    <br>
+    <br>
+    <p style="margin-inline-end: 5px;"id="tranotify_p" class="text"> <span id="tranotify">Let's Transact</span></p>
+    
+    
+    
+    <!-- <br>
+    <br>
+    <p>---------------------------------------------------------------------</p> -->
+    <!-- <br>
+    <img src="https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1632235621602x236921993913165250%2Fplugin_phantom.png?w=&h=&auto=compress&dpr=1&fit=max" width="100" height="100" alt="">
+    <br>
+    <br>
+    <p style="margin-left: 5px;"id="status_p" class="text">Status: <span id="status">Disconnected</span></p>
+    <br>
+    <input type="button" class="button" value="Connect Phantom" id="submitbtn" onclick="ConnectPhantomWallet()">
+    <br>
+    <br>
+    <input
+        type = "text"
+        placeholder = "Receiver's Address"
+        id = "addressol"
+        value = ""
+        class="text"
+    />
+    <br>
+    <br>
+    <input 
+        type="number"
+        placeholder = "Enter Amount"
+        id = "solvalue"
+        value = ""
+        class="text"
+    />
+    <br>
+    <br>
+    <button class="button" onclick="SendPhantom()">Transact Solana</button>
+    <br>
+    <br> -->
+    <!-- <p>---------------------------------------------------------------------</p>
+    <br>
+    <img src="https://seeklogo.com/images/H/hedera-hashgraph-hbar-logo-FDAEFE75BB-seeklogo.com.png" width="100" height="100" alt="">
+    <br>
+    <br>
+    <input type="button" value="Connect Hedera" id="submitbtn" onclick="ConnectHederaWallet()">
+    <br>
+    <br>
+    <br>
+    <br> -->
+</div>
+</body>
+</html>
