@@ -1,6 +1,5 @@
 window.ethereum.on('accountsChanged',() => document.getElementById("status").innerText="Disconnected")
-// AWB ---> 776469291420
-// console.log(solanaWeb3);
+window.ethereum.on('chainChanged', () => document.getElementById("currnet").innerText="Network Change Detected");
 
 var web3 = new Web3(window.ethereum);
 // var web3 = new Web3(window.solana);
